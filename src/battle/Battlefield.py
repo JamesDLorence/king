@@ -1,11 +1,11 @@
 import numpy as np
 
+from src.util.Position import Position
 from src.battle.Square import Square
-from src.battle.Position import Position
-from src.character import Character
+from src.character.Character import Character
 
 
-class BattleField:
+class Battlefield:
     """Representation of physical space a battle will take place"""
 
     def __init__(self, h=10, w=10):
@@ -15,12 +15,15 @@ class BattleField:
         # TODO: write functionality
         pass
 
-    def get_square_by_position(self, x: int, y: int) -> Square:
-        return self._battle_field[x, y]
+    def get_occupant_by_position(self, pos: Position):
+        return self._battle_field[pos.x, pos.y].get_occupant()
 
-    def move_occupant(self, occupant: Character, x: int, y: int):
+    def get_square_by_position(self, pos: Position) -> Square:
+        return self._battle_field[pos.x, pos.y]
+
+    def move_occupant(self, occupant: Character, pos: Position):
         current_square = self.get_square_by_occupant(occupant)
         current_square.remove_occupant()
 
-        new_square = self.get_square_by_position(x, y)
+        new_square = self.get_square_by_position(pos)
         new_square.add_occupant(occupant)
