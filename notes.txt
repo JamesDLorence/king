@@ -1,0 +1,6 @@
+A battle consists of characters taking actions.
+Each action consists of the action type, the location the action is being done, and possible a value or addition meta
+    data about action type.
+The BattleField manages character locations.
+The Battle encapsulate the BattleField anc Characters and manages passing actions to and from characters on the
+    BattleField, maintaining the turn order.
