@@ -10,3 +10,4 @@ class Action:
     value: int
     attribute: str
     result_pos: Position
+    direction: str

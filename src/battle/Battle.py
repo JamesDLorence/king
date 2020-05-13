@@ -17,7 +17,7 @@ class Battle:
             action = character.take_action(self._battle_field)
 
             if (action.type == ActionType.MOVE):
-                result = self._battle_field.move_occupant(character, action.result_pos)
+                result = self._battle_field.move_character(character, action.result_pos)
             elif (action.type in ActionType.__members__):
                 recipient = self._battle_field.get_occupant_by_position(action.result_pos)
                 result = recipient.receive_attack(action)
