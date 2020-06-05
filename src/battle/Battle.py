@@ -12,7 +12,7 @@ class Battle:
     def start(self):
         # TODO: Rewrite how turn order works
         i = 0
-        while(self.battle_still_going()):
+        while(self.is_battle_still_going()):
             character = self._turn_order[i]
             action = character.take_action(self._battle_field)
 
@@ -30,5 +30,6 @@ class Battle:
             else:
                 i++
 
-    def battle_still_going(self):
-        pass
+    def is_battle_still_going(self):
+        # TODO: Write logic
+        return True

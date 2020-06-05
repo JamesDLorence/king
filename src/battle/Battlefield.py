@@ -3,7 +3,7 @@ import numpy as np
 from src.util.Action import Action
 from src.util.Position import Position
 from src.battle.Square import Square
-from src.character.Character import Character
+from src.models.Character import Character
 
 
 class Battlefield:
