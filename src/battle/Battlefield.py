@@ -47,7 +47,7 @@ class Battlefield:
             new_pos = Position(x=pos.x - 1, y=pos.y)
         elif direction == "right":
             new_pos = Position(x=pos.x + 1, y=pos.y)
-        else
+        else:
             raise Exception
 
         return new_pos
@@ -55,9 +55,9 @@ class Battlefield:
     def check_if_valid_move_position(self, character: Character, action: Action) -> bool:
         pos = self.return_move_position(character, action.direction)
 
-        if pos.x < 0 || pos.x >= len(self._battlefield[0]):
+        if pos.x < 0 or pos.x >= len(self._battlefield[0]):
             return False
-        elif pos.y < 0 || pos.y >= len(self._battlefield):
+        elif pos.y < 0 or pos.y >= len(self._battlefield):
             return False
         else:
             return True

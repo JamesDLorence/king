@@ -28,7 +28,7 @@ class Battle:
             if i == (len(self._turn_order) - 1):
                 i = 0
             else:
-                i++
+                i += 1
 
     def is_battle_still_going(self):
         # TODO: Write logic

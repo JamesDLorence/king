@@ -1,0 +1,5 @@
+[
+  {"name": "Enemy1", "max_hp": 10, "att": 3, "df": 3, "mag": 1, "mag_df": 2, "sp": 2, "engine_type": "standard"},
+  {"name": "Enemy2", "max_hp": 10, "att": 2, "df": 2, "mag": 2, "mag_df": 2, "sp": 4, "engine_type": "standard"},
+  {"name": "Enemy3", "max_hp": 10, "att": 1, "df": 1, "mag": 3, "mag_df": 5, "sp": 2, "engine_type": "standard"}
+]
