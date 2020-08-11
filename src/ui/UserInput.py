@@ -2,7 +2,7 @@ from src.ui.ValidUserInput import ValidUserInput
 
 
 class UserInput:
--
+
     _valid_user_action = ['a']
 
     def get_user_action(self) -> str:

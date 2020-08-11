@@ -1,25 +1,25 @@
 from src.battle.Battlefield import Battlefield
 from src.util.ActionType import ActionType
-
+from src.ui import UI
 
 class Battle:
-    """Runs battle turns and manges character actions"""
+    """Runs battle turns and manages character actions"""
 
     def __init__(self, battle_field: Battlefield, turn_order: []):
-        self._battle_field = battle_field
+        self._battlefield = battle_field
         self._turn_order = turn_order
 
-    def start(self):
+    def start(self, mode=None):
         # TODO: Rewrite how turn order works
         i = 0
         while(self.is_battle_still_going()):
             character = self._turn_order[i]
-            action = character.take_action(self._battle_field)
+            action = character.take_action(self._battlefield)
 
             if (action.type == ActionType.MOVE):
-                result = self._battle_field.move_character(character, action.result_pos)
+                result = self._battlefield.move_character(character, action.result_pos)
             elif (action.type in ActionType.__members__):
-                recipient = self._battle_field.get_occupant_by_position(action.result_pos)
+                recipient = self._battlefield.get_occupant_by_position(action.result_pos)
                 result = recipient.receive_attack(action)
             else:
                 raise Exception
@@ -33,3 +33,13 @@ class Battle:
     def is_battle_still_going(self):
         # TODO: Write logic
         return True
+
+    def render(self, mode):
+        if mode == 'terminal':
+            UI.terminal_display(self._battlefield)
+
+
+
+
+
+

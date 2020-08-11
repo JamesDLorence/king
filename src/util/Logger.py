@@ -1,3 +1,3 @@
-class Logger:
 
-    def log_
+
+def print_current_state(battle):

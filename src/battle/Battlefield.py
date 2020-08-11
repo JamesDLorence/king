@@ -24,10 +24,10 @@ class Battlefield:
         return self._battlefield[pos.x, pos.y]
 
     def get_position_by_occupant(self, occupant: Character) -> Position:
-        for i in range(len(self._battlefield)):
-            for j in range(len(self._battlefield[i])):
-                if self._battlefield[i][j].get_occupant() == occupant:
-                    return Position(x=j, y=i)
+        for x in range(len(self._battlefield)):
+            for y in range(len(self._battlefield[y])):
+                if self._battlefield[y][x].get_occupant() == occupant:
+                    return Position(y, x)
 
     def move_character(self, character: Character, pos: Position):
         current_square = self.get_square_by_occupant(character)
@@ -40,13 +40,13 @@ class Battlefield:
         pos = self.get_position_by_occupant(character)
 
         if direction == "up":
-            new_pos = Position(x=pos.x, y=pos.y - 1)
+            new_pos = Position(y=pos.y - 1, x=pos.x)
         elif direction == "down":
-            new_pos = Position(x=pos.x, y=pos.y + 1)
+            new_pos = Position(y=pos.y + 1, x=pos.x)
         elif direction == "left":
-            new_pos = Position(x=pos.x - 1, y=pos.y)
+            new_pos = Position(y=pos.y, x=pos.x - 1)
         elif direction == "right":
-            new_pos = Position(x=pos.x + 1, y=pos.y)
+            new_pos = Position(y=pos.y, x=pos.x + 1)
         else:
             raise Exception
 
@@ -61,3 +61,6 @@ class Battlefield:
             return False
         else:
             return True
+
+    def get_dimensions(self):
+        return len(self._battlefield), len(self._battlefield[0])
