@@ -1,5 +1,5 @@
 from src.battle.Battlefield import Battlefield
-from src.util.ActionType import ActionType
+from src.util.ActionValues import ActionType
 from src.ui import UI
 
 class Battle:
@@ -17,7 +17,7 @@ class Battle:
         i = 0
         while(self.is_battle_still_going()):
             character = self._turn_order[i]
-            action = character.decide_action(self._battlefield)
+            action = character.decide_action(self._battlefield, mode=mode)
 
             self.resolve_action(action, character)
 

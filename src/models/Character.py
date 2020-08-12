@@ -1,4 +1,9 @@
+from ui import UI
+from util.Action import Action
+from util.ActionValues import ActionType
+
 from dataclasses import dataclass
+
 
 @dataclass
 class Character:
@@ -20,10 +25,22 @@ class Character:
         # TODO: Fix this
         return "Engine"
 
-    def decide_action(self, battlefield):
-        action = self._engine.decide_action(battlefield)
+    def decide_action(self, battlefield, mode=None):
+        if mode == "terminal":
+            act_type, direction, distance = UI.terminal_get_user_action()
+        else:
+            act_type, direction, distance = self.engine.decide_action(battlefield)
 
-        return action
+        if act_type == ActionType.attack:
+            act_val = self.att
+        elif act_type == ActionType.magic:
+            act_val = self.mag
+        else:
+            act_val = None
+
+        pos = battlefield.get_action_position(direction, distance)
+
+        return Action(type=act_type, value=act_val, result_pos=pos)
 
     def receive_action(self, action):
         # TODO: complete

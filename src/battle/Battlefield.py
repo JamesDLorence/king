@@ -42,17 +42,17 @@ class Battlefield:
         new_square = self.get_square_by_position(pos)
         new_square.add_occupant(character)
 
-    def get_move_position(self, character: Character, direction: str) -> Position:
+    def get_action_position(self, character: Character, direction: str, distance: int) -> Position:
         pos = self.get_position_by_occupant(character)
 
         if direction == "up":
-            new_pos = Position(y=pos.y - 1, x=pos.x)
+            new_pos = Position(y=pos.y - distance, x=pos.x)
         elif direction == "down":
-            new_pos = Position(y=pos.y + 1, x=pos.x)
+            new_pos = Position(y=pos.y + distance, x=pos.x)
         elif direction == "left":
-            new_pos = Position(y=pos.y, x=pos.x - 1)
+            new_pos = Position(y=pos.y, x=pos.x - distance)
         elif direction == "right":
-            new_pos = Position(y=pos.y, x=pos.x + 1)
+            new_pos = Position(y=pos.y, x=pos.x + distance)
         else:
             raise Exception
 

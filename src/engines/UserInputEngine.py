@@ -1,5 +1,5 @@
 from src.battle.Battlefield import Battlefield
-from src.ui.UserInput import UserInput
+from src.ui.TerminalUserInput import UserInput
 
 class UserInputEngine:
 
