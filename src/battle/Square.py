@@ -8,7 +8,7 @@ class Square:
         self._occupant = None
 
     def add_occupant(self, occupant):
-        if self._occupant is not None:
+        if self._occupant is None:
             self._occupant = occupant
         else:
             raise Exception

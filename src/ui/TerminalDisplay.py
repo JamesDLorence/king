@@ -1,22 +1,22 @@
 from src.util.Position import Position
 
-def render(self, battlefield):
+def render(battlefield):
     h, w = battlefield.get_dimensions()
 
-    self.print_line(w)
+    print_line(w)
     for y in range(h):
         for x in range(w):
-            occupant = battlefield.get_occupant_by_position(Position(y, x))
+            occupant = battlefield.get_occupant_by_pos(Position(y=y, x=x))
             print_square(occupant)
 
         # end row with closing pipe
         print('|')
-        self.print_line(w)
+        print_line(w)
 
-def print_line(self, w):
+def print_line(w):
     print((w * 5 + 1) * '-')
 
-def print_square(self, occupant):
+def print_square(occupant):
     if occupant is None:
         output = '|    '
     else:
