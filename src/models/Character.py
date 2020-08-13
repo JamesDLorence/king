@@ -27,21 +27,32 @@ class Character:
 
     def decide_action(self, battlefield, mode=None):
         if mode == "terminal":
-            act_type, direction, distance = UI.terminal_get_user_action()
+            act_type, direction, distance = UI.terminal_get_user_action(self.name)
         else:
             act_type, direction, distance = self.engine.decide_action(battlefield)
 
-        if act_type == ActionType.attack:
+        if act_type == ActionType.attack.name:
             act_val = self.att
-        elif act_type == ActionType.magic:
+        elif act_type == ActionType.magic.name:
             act_val = self.mag
         else:
             act_val = None
 
-        pos = battlefield.get_action_position(direction, distance)
+        pos = battlefield.get_action_position(self, direction, distance)
 
         return Action(type=act_type, value=act_val, result_pos=pos)
 
     def receive_action(self, action):
-        # TODO: complete
-        pass
+        if action.type == ActionType.attack.name:
+            self.hp -= action.value - self.df
+        elif action.type == ActionType.magic.name:
+            self.hp -= action.value - self.mag_df
+
+        if self.hp <= 0:
+            self.hp = 0
+
+        return self.hp != 0
+
+
+
+

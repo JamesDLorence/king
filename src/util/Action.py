@@ -8,6 +8,6 @@ class Action:
     # TODO: check about adding enum values to types
     type: str
     value: int
-    magic_attribute: str
     result_pos: Position
-    facing_direction: str
+#    facing_direction: str
+#    magic_attribute: str

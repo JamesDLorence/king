@@ -21,15 +21,15 @@ class Battlefield:
         occupant = self.get_square_by_position(pos)
         return occupant
 
-    def get_occupant_by_pos(self, pos: Position):
+    def get_occupant_by_position(self, pos: Position):
         return self._battlefield[pos.y][pos.x].get_occupant()
 
-    def get_square_by_pos(self, pos: Position) -> Square:
+    def get_square_by_position(self, pos: Position) -> Square:
         return self._battlefield[pos.y][pos.x]
 
     def get_position_by_occupant(self, occupant: Character) -> Position:
-        for x in range(len(self._battlefield)):
-            for y in range(len(self._battlefield[y])):
+        for y in range(len(self._battlefield)):
+            for x in range(len(self._battlefield[y])):
                 if self._battlefield[y][x].get_occupant() == occupant:
                     return Position(y=y, x=x)
 
@@ -72,4 +72,4 @@ class Battlefield:
         return len(self._battlefield), len(self._battlefield[0])
 
     def add_new_character(self, character, pos):
-        self.get_square_by_pos(pos).add_occupant(character)
+        self.get_square_by_position(pos).add_occupant(character)
