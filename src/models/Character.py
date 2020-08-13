@@ -3,6 +3,7 @@ from util.Action import Action
 from util.ActionValues import ActionType
 
 from dataclasses import dataclass
+import math
 
 
 @dataclass
@@ -44,7 +45,7 @@ class Character:
 
     def receive_action(self, action):
         if action.type == ActionType.attack.name:
-            self.hp -= action.value - self.df
+            self.hp -= math.ceil(action.value - (self.df / 2))
         elif action.type == ActionType.magic.name:
             self.hp -= action.value - self.mag_df
 

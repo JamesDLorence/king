@@ -13,7 +13,6 @@ class Battle:
         if mode is not None:
             self.render(mode)
 
-        # TODO: Rewrite how turn order works
         i = 0
         while(self.is_battle_still_going()):
             character = self._turn_order[i]
@@ -39,7 +38,7 @@ class Battle:
             if result is False:
                 self._battlefield.get_square_by_occupant(recipient).remove_occupant()
                 self._turn_order.remove(recipient)
-
+        # TODO: clean this up
         elif action.type == ActionType.none.name:
             pass
         else:
